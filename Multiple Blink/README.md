@@ -20,3 +20,22 @@ If you can control a ton of LEDs, what is keeping you from having a little fun? 
 
 ### UART Pattern Control
 If you have been using UART, could you set which LEDs are on or off based off some UART command? Would you want to send an Array over UART such as [1 0 1 0] or would you want to send a byte that corresponds to the status? Can you not only say which LEDs are on, but also tell them to blink at a particular rate if they were on (so LED1 Blink every 100ms)?
+
+
+Created on: Sept 10, 2018
+Last Edited: Sept 10, 2018
+Author: Nick Woodward
+
+The purpose of this code is to blink two LEDs on two seperate boards. The boards chosen for this part of the lab was the MSP430G2553 and the MSP430F5529LP. Below, each variable and function is listed and described based on its purpose within the code:
+
+Registers:
+WDTCTL = WDTPW | WDTHOLD;
+//The purpose of this line is to shut off the watchdog timer to prevent unwanted an unwanted processor reset.
+
+P1DIR |= 0X41;    
+//The purpose of this line is to set Pin 1 and Pin 0 to be 1 without disturbing or manipulating the values of the other pins. This is achieved by OR'ing P1DIR with 0x41, which is 0b01000001 in binary. 
+
+P1OUT = 0X41; 
+//The purpose of this line is to set Pin 1 and Pin 0 to are set to be 1 to start without disturbing or manipulating the values of the other pins. This is achieved by OR'ing P1OUT with 0x41, which is 0b01000001 is binary.
+
+
