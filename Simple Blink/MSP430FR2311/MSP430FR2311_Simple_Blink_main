@@ -1,0 +1,25 @@
+#include <msp430fr2311.h>
+
+/*
+ * main.c
+ */
+int main(void) {
+    WDTCTL = WDTPW | WDTHOLD;// Stop watchdog timer
+
+    P1DIR |= 0X01; //Sets Pin 0 to be an output
+
+    P1OUT = 0X01; //Sets Pin 0 to be initially 1
+
+PM5CTL0 &= ~LOCKLPM5; //Unlocks GPIO ports
+    unsigned int a; //variable created to be incremented by one in a for loop
+
+
+    while(1)
+    {
+
+        P1OUT ^= 0X01; //Toggles the LED on PIN 1.0 on/off
+        for (a = 0; a < 10000; a++){} //for loop that counts up in increments of 1 until it reaches a defined value, in which once met will break out of the loop 
+
+    }
+    return 0;
+}
