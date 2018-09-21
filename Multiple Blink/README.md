@@ -2,7 +2,7 @@
 
 Created on: Sept 16, 2018
 
-Last Edited: Sept 20, 2018
+Last Edited: Sept 21, 2018
 
 Author: Nick Woodward
 
@@ -29,14 +29,23 @@ int timer2 = 0;
 ## Function:
 
 timer1 = (timer1 + 1) % 200; //Counts up to 500
+
         if (timer1 == 0) //Divides the timer by modulus 500. If the result is 0, than toggle LED on/off. 
+        
         {
+        
             P1OUT ^= 0X40; //PIN 1.6 is toggled (Red LED)
+            
         }
+        
 timer2 = (timer2 + 1) % 1200; //Counts up to 1500
+
         if (timer2 == 0) //Divides timer by modulus 1500. If the result is 0, than toggle LED
+        
                 {
+                
                     P1OUT ^= 0X01;  //PIN 1.0 is toggled (Green LED)
+                    
                 }
 
 Above is the framework of for the MSP430G2553. In order to navigate this code successful MSP430F5529LP, the following changes below must be made:
