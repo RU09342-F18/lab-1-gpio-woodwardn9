@@ -1,21 +1,3 @@
-# Button Blink
-Now that you have looked at blinking the LED from some built in delay, but what if we wanted to control the state of the LED by a button? You may think "Why would I need a Microcontroller to perform the job of a switch?". And that is where you come in. The bare minimum for this part of the lab is to essentially replicate a switch with your development board.
-
-# YOU NEED TO CREATE THE FOLLOWING FOLDERS
-* MSP430G2553
-* MSP(FILL IN THE PROCESSOR YOU ARE USING)
-
-## README
-Remember to replace this README with your README once you are ready to submit. I would recommend either making a copy of this file or taking a screen shot. There might be a copy of all of these README's in a folder on the top level depending on the exercise. Make sure you talk about how your button is configured (momentary or continuous. Normally open or closed. Does the button press indicate when the LED should be on or off.)
-
-## Extra Work
-What can we do to make this a little bit more worthy of needing a microcontroller.
-
-### Button Based Speed Control
-Much like the UART controlled speed, what if you could cycle between speeds based on a button press? The speed could progress through a cycle of "Off-Slow-Medium-Fast" looping back when you hit the end.
-
-### Color Change
-What if upon a button press, the LED which was blinking changed. Some of the development boards contain two LEDs, so you could swap between a Red and a Green LED.
 
 Created on: Sept 16, 2018 
 
@@ -25,30 +7,34 @@ Author: Nick Woodward
 
 The purpose of this code is to turn on an LED on a button press and remain on until a button is pressed again. The boards chosen for this part of the lab was the MSP430G2553 and the MSP432P401R. Below, each variable and function is listed and described based on its purpose within the code:
 
-Registers: 
+## Registers: 
+
 WDTCTL = WDTPW | WDTHOLD; //The purpose of this line is to shut off the watchdog timer to prevent unwanted an unwanted processor reset.
 
-Variables:
+## Variables:
 
 #define BUTTON Bit3 //Bit 3 is defined and used in the code as BUTTON.
+
   P1DIR = 0X40; // Pin 7 is set as the output
+  
   P1REN = BUTTON; // Pull Up/ Pull Down resistors are enabled on Bit 3
+  
   P1OUT = BUTTON; // Pull up resistor is chosen on Bit 3
   
   
-  Functions:
+ ## Functions:
 
   if((P1IN & BUTTON) == 0x00) //If the button (BIT3) is pressed, it becomes 0, causing this statement to be true and proceed to the delayed cycles.
-  {
+  
+ 
   __delay_cycles(5000); //Delays reading on button to remove the inconsistinces of the button press
   if((P1IN & BUTTON) == 0x00) // If the button is still pressed, then it becomes 0 and causes this statement to become true, proceeding to the next step
-  {
+  
   P1OUT ^= 0X40; //Toggles the LED on or off
+  
   while((P1IN & BUTTON) == 0x00); //BUTTON is always 1 due to pull up resistor, so it gets trapped in the while loop until P1IN is pressed (becomes 0)
-  }
-  }
-  }
- }
+ 
+ 
  
 In order for the above code to work on the MSP432P401R, a few bits must be renamed. Below are a few lines of code that must be changed in order for it to work. In addition to the below code to be changed, the top of the code (#include) must also be altered to the correct board!
 
@@ -58,9 +44,11 @@ if((P1IN & BUTTON) == 0x00) becomes if((P1IN & BIT1) == 0x00) //BUTTON (Bit 3) b
 
 P1OUT ^= 0X40 becomes P1OUT ^= 0X01; //LED pin 0 (Bit 0) becomes the LED toggle bit
 
-Variables:
+## Variables:
 
 P1DIR = 0X01; //Pin 0 is set as the output
+
 P1REN = BIT1; //Pull Up/Pull Down resistors are enabled on Bit 1
+
 P1OUT = BIT1; //Pull up resistor is chosen on Bit 3
  
