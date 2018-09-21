@@ -1,0 +1,25 @@
+#include <msp432p401r.h>
+
+
+
+ void main(void)
+ {
+  WDTCTL = WDTPW|WDTHOLD; //Turns off the watchdog timer
+  P1DIR = 0X01; //Sets Bit 0 as an output
+  P1REN = BIT1; //Enables Pull Up/ Pull Down resistor on Bit 1 on Port 1
+  P1OUT = BIT1; //Enables Pull Up resistor on Bit 1 on Port 1
+
+  while(1){
+  if((P1IN & BIT1) == 0x00) // When BIT1 is pressed, BIT1 and P1IN will both equal zero, proceeding to the next function
+  {
+  __delay_cycles(5000); //Delays reading on button press to make sure it was pressed 
+  if((P1IN & BIT1) == 0x00) // When BIT1 is pressed, BIT1 and P1IN will both equal zero, proceeding to the next function
+  {
+  P1OUT ^= 0X01; //Toggles the LED 
+
+  while((P1IN & BIT1) == 0x00); //BIT 1 is always 1 due to pull up resistor, so it gets trapped in the while loop until P1IN is pressed (becomes 0)
+  }
+  }
+  }
+ 
+ }
