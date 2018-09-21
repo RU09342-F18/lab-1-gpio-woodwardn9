@@ -36,6 +36,9 @@ Above is the framework of for the MSP430G2553. In order to use this code success
 PM5CTL0 &= ~LOCKLPM5; 
 
 //This line of code must be added to unlock the GPIO functionality of the MSP430FR2311.
+
+#include <msp430g2553> becomes #include <msp430fr2311.h>
+
                             
                                
   ## SIngle Blink on MSP430G2553
