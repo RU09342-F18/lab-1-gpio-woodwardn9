@@ -15,7 +15,7 @@ WDTCTL = WDTPW | WDTHOLD; //The purpose of this line is to shut off the watchdog
 
 #define BUTTON Bit3 //Bit 3 is defined and used in the code as BUTTON.
 
-  P1DIR = 0X40; // Pin 7 is set as the output
+  P1DIR = 0X40; // Pin 1.7 is set as the output
   
   P1REN = BUTTON; // Pull Up/ Pull Down resistors are enabled on Bit 3
   
@@ -28,6 +28,7 @@ WDTCTL = WDTPW | WDTHOLD; //The purpose of this line is to shut off the watchdog
   
  
   __delay_cycles(5000); //Delays reading on button to remove the inconsistinces of the button press
+  
   if((P1IN & BUTTON) == 0x00) // If the button is still pressed, then it becomes 0 and causes this statement to become true, proceeding to the next step
   
   P1OUT ^= 0X40; //Toggles the LED on or off
@@ -40,15 +41,23 @@ In order for the above code to work on the MSP432P401R, a few bits must be renam
 
 #include <msp432p401r.h> //Changed in order to incopreator the correct board's header file.
  
-if((P1IN & BUTTON) == 0x00) becomes if((P1IN & BIT1) == 0x00) //BUTTON (Bit 3) becomes Bit 1 to work with the MSP432
+if((P1IN & BUTTON) == 0x00) becomes if((P1IN & BIT1) == 0x00) //BUTTON (Bit 3) becomes Bit 1 to work with the MSP432P401R
 
-P1OUT ^= 0X40 becomes P1OUT ^= 0X01; //LED pin 0 (Bit 0) becomes the LED toggle bit
+P1OUT ^= 0X40 becomes P1OUT ^= 0X01; //Pin 1.0 (Bit 0) becomes the LED toggle bit
 
-## Variables:
-
-P1DIR = 0X01; //Pin 0 is set as the output
+P1DIR = 0X01; //Pin 1.0 is set as the output
 
 P1REN = BIT1; //Pull Up/Pull Down resistors are enabled on Bit 1
 
-P1OUT = BIT1; //Pull up resistor is chosen on Bit 3
+P1OUT = BIT1; //Pull up resistor is chosen on Bit 1
+
+## Button Blink on MSP430G2553
+
+<iframe src="https://giphy.com/embed/3E3EIWT1DnrnvMoDUp" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/3E3EIWT1DnrnvMoDUp">via GIPHY</a></p>
+
+## Button Blink on MSP432P401R
+
+<iframe src="https://giphy.com/embed/35P0pu0bGKYlY9jTGH" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/35P0pu0bGKYlY9jTGH">via GIPHY</a></p>
+
+
  
