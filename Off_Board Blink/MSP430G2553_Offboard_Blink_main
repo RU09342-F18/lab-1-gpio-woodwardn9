@@ -1,0 +1,35 @@
+#include <msp430g2553.h>
+
+//Code for offboard blink of the MSP430G2553
+
+/*
+ * main.c
+ */
+int main(void) {
+    WDTCTL = WDTPW | WDTHOLD;// Stop watchdog timer
+
+    P1DIR |= 0X41;    //Pin 1.6 and Pin 1.0 are set as outputs
+
+
+
+
+    int timer1 = 0; // Timer1 and Timer2 are created to count up by increments of 1
+    int timer2 = 0;
+
+    while(1)
+    {
+
+        timer1 = (timer1 + 1) % 200; //Counts up to 500
+        if (timer1 == 0) //Divides timer by modulus 500. If the result is 0, than toggle LED
+        {
+            P1OUT ^= 0X40; //PIN 1.6 is toggled (Red LED)
+        }
+        timer2 = (timer2 + 1) % 1200; //Counts up to 1500
+        if (timer2 == 0) //Divides timer by modulus 1500. If the result is 0, than toggle LED
+                {
+                    P1OUT ^= 0X01;  //PIN 1.0 is toggled (Green LED)
+                }
+
+    }
+    return 0;
+}
