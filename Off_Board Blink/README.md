@@ -29,4 +29,8 @@ int timer1 = 0; int timer2 = 0;
 
 timer1 = (timer1 + 1) % 200; //Counts up to 500 if (timer1 == 0) //Divides timer by modulus 500. If the result is 0, than toggle LED on/off. { P1OUT ^= 0X40; //PIN 1.6 is toggled (Red LED) }
 
+## MSP430G2553 Demo
+
+<div style="width:100%;height:0;padding-bottom:178%;position:relative;"><iframe src="https://giphy.com/embed/9G1iHHsU1QC7CsnN6s" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/9G1iHHsU1QC7CsnN6s">via GIPHY</a></p>
+
 
