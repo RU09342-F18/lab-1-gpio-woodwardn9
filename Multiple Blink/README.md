@@ -48,7 +48,9 @@ timer2 = (timer2 + 1) % 1200; //Counts up to 1500
                     
                 }
 
-Above is the framework of for the MSP430G2553. In order to navigate this code successful MSP430F5529LP, the following changes below must be made:
+Above is the framework of for the MSP430G2553. In order to use this code successfully on the MSP430F5529LP, the following changes below must be made:
+
+ <msp430g2553.h> is changed to <msp430.h>
 
   P1OUT ^= 0X40 is changed to  P1OUT ^= 0X01 //This line of code toggles PIN 0 (Red LED)
   
