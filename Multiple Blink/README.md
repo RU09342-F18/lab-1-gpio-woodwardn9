@@ -44,5 +44,12 @@ Above is the framework of for the MSP430G2553. In order to navigate this code su
   P1DIR |= 0X41; is changed to P1DIR |= 0X01 and P4DIR |= BIT7;    //Port 1.4 and 1.1 are altered to 1.0 and 4.8
                             
                                
-                               
+  ## Multiblink on MSP430G2553
+  
+  <iframe src="https://giphy.com/embed/wZCZQX8a9lBWJp63sP" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/wZCZQX8a9lBWJp63sP">via GIPHY</a></p>
+  
+  ## Multiblink on MSP430F5529LP
+  
+  <iframe src="https://giphy.com/embed/x49KAJ4CqSOopOSf8t" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/x49KAJ4CqSOopOSf8t">via GIPHY</a></p>
+  
   
