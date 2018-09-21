@@ -1,0 +1,25 @@
+#include <msp430g2553.h>
+
+/*
+ * main.c
+ */
+int main(void) {
+    WDTCTL = WDTPW | WDTHOLD;// Stop watchdog timer
+
+    P1DIR |= 0X01;    //Pin 1.0 is set as the output
+
+    P1OUT = 0X01; //Pin 1.0 is set to be 1 to start
+
+
+    unsigned int a; //variable created that increments by 1 to determine LED toggle
+
+
+    while(1)
+    {
+
+        P1OUT ^= 0X01; //toggles LED on Pin 1.0 on/off
+        for (a = 0; a < 10000; a++){} //for loop that counts up to a certain number. When this number is reached, it breaks out of the loop and toggles the LED
+
+    }
+    return 0;
+}
