@@ -6,26 +6,30 @@ Author: Nick Woodward
 
 The purpose of this code is to blink two LEDs on two seperate boards. The boards chosen for this part of the lab was the MSP430G2553 and the MSP430F5529LP. Below, each variable and function is listed and described based on its purpose within the code:
 
-Registers:
+## Registers:
+
 WDTCTL = WDTPW | WDTHOLD;
 //The purpose of this line is to shut off the watchdog timer to prevent unwanted an unwanted processor reset.
 
-P1DIR |= 0X41;    
+P1DIR |= 0X41; 
+
 //The purpose of this line is to set Pin 1 and Pin 0 to be 1 without disturbing or manipulating the values of the other pins. This is achieved by OR'ing P1DIR with 0x41, which is 0b01000001 in binary. 
 
 P1OUT = 0X41; 
 //The purpose of this line is to set Pin 1 and Pin 0 to are set to be 1 to start without disturbing or manipulating the values of the other pins. This is achieved by OR'ing P1OUT with 0x41, which is 0b01000001 is binary.
 
-Variables: 
+## Variables: 
+
 int timer1 = 0;
+
 int timer2 = 0;
 
-//These two variables are created as timers that count up in increments of 1.
+//These two timer variables are created to count up in increments of 1.
 
-Function:
+## Function:
 
 timer1 = (timer1 + 1) % 200; //Counts up to 500
-        if (timer1 == 0) //Divides timer by modulus 500. If the result is 0, than toggle LED on/off. 
+        if (timer1 == 0) //Divides the timer by modulus 500. If the result is 0, than toggle LED on/off. 
         {
             P1OUT ^= 0X40; //PIN 6 is toggled (Red LED)
         }
