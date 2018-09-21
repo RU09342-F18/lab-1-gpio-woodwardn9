@@ -31,6 +31,6 @@ timer1 = (timer1 + 1) % 200; //Counts up to 500 if (timer1 == 0) //Divides timer
 
 ## MSP430G2553 Demo
 
-<div style="width:100%;height:0;padding-bottom:178%;position:relative;"><iframe src="https://giphy.com/embed/9G1iHHsU1QC7CsnN6s" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/9G1iHHsU1QC7CsnN6s">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/1zkHFecuct7DjzUiU9" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/1zkHFecuct7DjzUiU9">via GIPHY</a></p>
 
 
